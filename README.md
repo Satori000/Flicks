@@ -53,4 +53,6 @@ CocoaPods did not install initially due to changes to OS X El Capitan.
     See the License for the specific language governing permissions and
     limitations under the License.
     
-    
+    #R.I.P David Bowie (8th January 1947 – 10th January 2016)
+<img src='https://media4.giphy.com/media/yoJC2wQqhXpm97vdeg/200w.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+

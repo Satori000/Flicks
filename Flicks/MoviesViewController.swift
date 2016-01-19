@@ -14,12 +14,12 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
 
     @IBOutlet weak var tableView: UITableView!
     
+    
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+        //errorButton.hidden = true
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         tableView.insertSubview(refreshControl, atIndex: 0)
@@ -47,12 +47,23 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.tableView.reloadData()
                     }
+                    print("Something shown")
+                } else {
+                   //self.errorButton.hidden = false
+                   // self.tableView.hidden = true
+                    print("nothing shown")
                 }
         });
         task.resume()
        
     }
     
+    
+    
+    @IBAction func buttonPressed(sender: AnyObject) {
+        
+        onRefresh()
+    }
  
     
     func onRefresh() {
@@ -77,6 +88,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             self.tableView.reloadData()
                     }
                     
+                }
+                else {
+                    //self.errorButton.hidden = false
+                    //self.tableView.hidden = true
+                    print("nothing Shown")
                 }
                 //EZLoadingActivity.hide(success: true, animated: true)
         });
@@ -179,6 +195,19 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         
         print("row \(indexPath.row)")
         return cell
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let cell = sender as! UITableViewCell
+        let indexPath = tableView.indexPathForCell(cell)
+        let movie = movies![indexPath!.row]
+        
+        
+        let detailViewController = segue.destinationViewController as! DetailViewController
+        
+        detailViewController.movie = movie
         
     }
 

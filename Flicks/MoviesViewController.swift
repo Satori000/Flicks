@@ -10,9 +10,10 @@ import UIKit
 import AFNetworking
 import EZLoadingActivity
 
-class MoviesViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIScrollViewDelegate {
+class MoviesViewController: UIViewController, UICollectionViewDataSource {
 
-    @IBOutlet weak var tableView: UITableView!
+    
+    @IBOutlet weak var collectionView: UICollectionView!
     
     
     var movies: [NSDictionary]?
@@ -30,11 +31,11 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         //errorButton.hidden = true
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
-        tableView.insertSubview(refreshControl, atIndex: 0)
+        collectionView.insertSubview(refreshControl, atIndex: 0)
         
        // EZLoadingActivity.hide()
-        tableView.dataSource = self
-        tableView.delegate = self
+        collectionView.dataSource = self
+        //collectionView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
@@ -53,7 +54,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             NSLog("response: \(responseDictionary)")
                             
                             self.movies = responseDictionary["results"] as? [NSDictionary]
-                            self.tableView.reloadData()
+                            self.collectionView.reloadData()
                     }
                     print("Something shown")
                 } else {
@@ -93,7 +94,7 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
                             NSLog("response: \(responseDictionary)")
                             
                             self.movies = responseDictionary["results"] as? [NSDictionary]
-                            self.tableView.reloadData()
+                            self.collectionView.reloadData()
                     }
                     
                 }
@@ -128,7 +129,65 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        if let movies = movies {
+            return movies.count
+        } else {
+            return 0
+        }
+    }
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("MovieCollectionCell", forIndexPath: indexPath) as! MovieCollectionCell
+        
+        let movie = movies![indexPath.row]
+        if let posterPath = movie["poster_path"] as? String {
+            let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+            //let posterUrl = NSURL(string: posterBaseUrl + posterPath)
+            //cell.posterView.setImageWithURL(posterUrl!)
+            
+            
+            
+            
+            //new code after this
+            
+            //let imageUrl = "https://i.imgur.com/tGbaZCY.jpg"
+            let imageRequest = NSURLRequest(URL: NSURL(string: posterBaseUrl + posterPath)!)
+            
+            cell.posterImage.setImageWithURLRequest(
+                imageRequest,
+                placeholderImage: nil,
+                success: { (imageRequest, imageResponse, image) -> Void in
+                    
+                    // imageResponse will be nil if the image is cached
+                    if imageResponse != nil {
+                        print("Image was NOT cached, fade in image")
+                        cell.posterImage.alpha = 0.0
+                        cell.posterImage.image = image
+                        UIView.animateWithDuration(0.3, animations: { () -> Void in
+                            cell.posterImage.alpha = 1.0
+                        })
+                    } else {
+                        print("Image was cached so just update the image")
+                        cell.posterImage.image = image
+                    }
+                },
+                failure: { (imageRequest, imageResponse, error) -> Void in
+                    // do something for the failure condition
+            })
+        }
+        else {
+            // No poster image. Can either set to nil (no image) or a default movie poster image
+            // that you include as an asset
+            cell.posterImage.image = nil
+        }
+
+        
+        
+        return cell
+    }
+    
+   /* func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let movies = movies {
             return movies.count
         } else {
@@ -206,12 +265,14 @@ class MoviesViewController: UIViewController, UITableViewDataSource, UITableView
         print("row \(indexPath.row)")
         return cell
         
-    }
+    } */
+    
+    
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
-        let cell = sender as! UITableViewCell
-        let indexPath = tableView.indexPathForCell(cell)
+        let cell = sender as! UICollectionViewCell
+        let indexPath = collectionView.indexPathForCell(cell)
         let movie = movies![indexPath!.row]
         
         

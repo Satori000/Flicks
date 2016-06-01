@@ -15,6 +15,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource {
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var errorView: UIView!
     
     var movies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
@@ -23,7 +24,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        errorView.hidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
@@ -49,18 +50,23 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource {
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if let data = dataOrNil {
+                    print("hello why are you working 0")
+
+                    self.errorView.hidden = true
+
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
+                            //NSLog("response: \(responseDictionary)")
                             
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.collectionView.reloadData()
                     }
                     print("Something shown")
                 } else {
-                   //self.errorButton.hidden = false
-                   // self.tableView.hidden = true
-                    print("nothing shown")
+                    print("..........nothing shown0")
+                    self.errorView.hidden = false
+                    
+                    
                 }
         });
         task.resume()
@@ -88,20 +94,34 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource {
         )
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
+                if (error != nil) {
+                    print("error")
+                }
                 if let data = dataOrNil {
+                    print("hello why are you working")
+                    self.errorView.hidden = true
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
-                            NSLog("response: \(responseDictionary)")
-                            
+                            //NSLog("response: \(responseDictionary)")
+                        if responseDictionary["results"] == nil {
+                            print("error2")
+                        }
                             self.movies = responseDictionary["results"] as? [NSDictionary]
                             self.collectionView.reloadData()
+                    } else {
+                        
+                        print("1.................nothing shown")
                     }
                     
                 }
                 else {
+                    print("............nothing Shown2")
+                    self.errorView.hidden = false
+                    //self.view.bringSubviewToFront(self.errorView)
+                   // self.view.bringSubviewToFront(<#T##view: UIView##UIView#>)
                     //self.errorButton.hidden = false
                     //self.tableView.hidden = true
-                    print("nothing Shown")
+                    
                 }
                 //EZLoadingActivity.hide(success: true, animated: true)
         });
@@ -161,14 +181,14 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource {
                     
                     // imageResponse will be nil if the image is cached
                     if imageResponse != nil {
-                        print("Image was NOT cached, fade in image")
+                        //print("Image was NOT cached, fade in image")
                         cell.posterImage.alpha = 0.0
                         cell.posterImage.image = image
                         UIView.animateWithDuration(0.3, animations: { () -> Void in
                             cell.posterImage.alpha = 1.0
                         })
                     } else {
-                        print("Image was cached so just update the image")
+                        //print("Image was cached so just update the image")
                         cell.posterImage.image = image
                     }
                 },

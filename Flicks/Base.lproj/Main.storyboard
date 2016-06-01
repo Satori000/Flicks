@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enm-sp-eed">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enm-sp-eed">
+                                <rect key="frame" x="0.0" y="106" width="320" height="462"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V1M-yV-bdL">
                                     <size key="itemSize" width="114" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -46,23 +46,47 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NJY-MF-Yf0">
+                                <rect key="frame" x="0.0" y="64" width="320" height="42"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" image="noun_4627_cc" translatesAutoresizingMaskIntoConstraints="NO" id="NmQ-i6-RHK">
+                                        <rect key="frame" x="85" y="8" width="25" height="26"/>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Network Error" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KTj-9b-hgu">
+                                        <rect key="frame" x="113" y="10" width="121" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
+                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.68257211538461537" green="0.68257211538461537" blue="0.68257211538461537" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="KTj-9b-hgu" firstAttribute="top" secondItem="NJY-MF-Yf0" secondAttribute="top" constant="10" id="YjZ-pc-fm5"/>
+                                    <constraint firstItem="NmQ-i6-RHK" firstAttribute="top" secondItem="NJY-MF-Yf0" secondAttribute="top" constant="8" id="huB-bJ-Wt0"/>
+                                    <constraint firstItem="KTj-9b-hgu" firstAttribute="leading" secondItem="NmQ-i6-RHK" secondAttribute="trailing" constant="3" id="v2K-KJ-hcK"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Cuw-l5-vIg" firstAttribute="top" secondItem="enm-sp-eed" secondAttribute="bottom" id="9zu-Of-NeR"/>
-                            <constraint firstItem="enm-sp-eed" firstAttribute="top" secondItem="hcy-cZ-xcM" secondAttribute="bottom" id="coh-lH-tsR"/>
+                            <constraint firstItem="NJY-MF-Yf0" firstAttribute="top" secondItem="hcy-cZ-xcM" secondAttribute="bottom" id="bnm-2M-zpD"/>
+                            <constraint firstAttribute="trailing" secondItem="NJY-MF-Yf0" secondAttribute="trailing" id="c9w-gW-Q4P"/>
                             <constraint firstItem="enm-sp-eed" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fY1-LU-Hzx"/>
+                            <constraint firstItem="NJY-MF-Yf0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hBu-mc-dM2"/>
                             <constraint firstAttribute="trailing" secondItem="enm-sp-eed" secondAttribute="trailing" id="jOJ-cg-wq3"/>
+                            <constraint firstItem="enm-sp-eed" firstAttribute="top" secondItem="NJY-MF-Yf0" secondAttribute="bottom" id="nC5-e4-aVr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="jn8-RL-wCW"/>
                     <connections>
                         <outlet property="collectionView" destination="enm-sp-eed" id="KnU-KA-ezX"/>
+                        <outlet property="errorView" destination="NJY-MF-Yf0" id="hi3-Fo-VL6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="731" y="0.99999999999999944"/>
+            <point key="canvasLocation" x="731" y="1"/>
         </scene>
         <!--Detail-->
         <scene sceneID="9Og-ef-t4A">
@@ -150,5 +174,8 @@
             <point key="canvasLocation" x="199" y="0.99999999999999933"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="noun_4627_cc" width="666" height="572"/>
+    </resources>
     <color key="tintColor" red="0.0" green="0.0" blue="0.0" alpha="0.76634530140000001" colorSpace="calibratedRGB"/>
 </document>

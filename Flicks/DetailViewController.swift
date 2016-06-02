@@ -31,13 +31,65 @@ class DetailViewController: UIViewController {
         
         let title = movie["title"] as! String
         let overview = movie["overview"] as! String
+        let posterPath = movie["poster_path"] as? String
+        let highResBaseUrl = "https://image.tmdb.org/t/p/original"
+        let lowResBaseUrl = "https://image.tmdb.org/t/p/w45"
+        let smallImageRequest = NSURLRequest(URL: NSURL(string: lowResBaseUrl + posterPath!)!)
+        let largeImageRequest = NSURLRequest(URL: NSURL(string: highResBaseUrl + posterPath!)!)
         
-        let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+        self.posterView.setImageWithURLRequest(
+            smallImageRequest,
+            placeholderImage: nil,
+            success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
+                
+                // smallImageResponse will be nil if the smallImage is already available
+                // in cache (might want to do something smarter in that case).
+                self.posterView.alpha = 0.0
+                self.posterView.image = smallImage;
+                
+                UIView.animateWithDuration(0.3, animations: { () -> Void in
+                    
+                    self.posterView.alpha = 1.0
+                    
+                    }, completion: { (sucess) -> Void in
+                        
+                        // The AFNetworking ImageView Category only allows one request to be sent at a time
+                        // per ImageView. This code must be in the completion block.
+                        self.posterView.setImageWithURLRequest(
+                            largeImageRequest,
+                            placeholderImage: smallImage,
+                            success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                                
+                                self.posterView.image = largeImage;
+                                
+                            },
+                            failure: { (request, response, error) -> Void in
+                                // do something for the failure condition of the large image request
+                                // possibly setting the ImageView's image to a default image
+                        })
+                })
+            },
+            failure: { (request, response, error) -> Void in
+                // do something for the failure condition
+                // possibly try to get the large image
+        })
+        
+        
+        
+        
+        
+        
+        
+        /*let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+        let highResBaseUrl = "https://image.tmdb.org/t/p/original"
+        let lowResBaseUrl = "https://image.tmdb.org/t/p/w45"
+        
         
         if let posterPath = movie["poster_path"] as? String {
-            let posterURL = NSURL(string: posterBaseUrl + posterPath)
+            var posterURL = NSURL(string: lowResBaseUrl + posterPath)
             posterView.setImageWithURL(posterURL!)
-        }
+            
+        } */
         
         
         
@@ -45,7 +97,7 @@ class DetailViewController: UIViewController {
         overviewLabel.text = overview
         overviewLabel.sizeToFit()
         
-        
+
         //posterView.setImageWithURL(<#T##url: NSURL##NSURL#>)
         
         

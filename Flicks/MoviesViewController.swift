@@ -12,7 +12,7 @@ import EZLoadingActivity
 
 class MoviesViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
 
-    @IBOutlet weak var searchBar: UISearchBar!
+    //@IBOutlet weak var searchBar: UISearchBar!
     
     @IBOutlet weak var collectionView: UICollectionView!
     
@@ -33,6 +33,10 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         self.navigationController?.navigationBar.barTintColor = UIColor.grayColor()
+        self.navigationItem.titleView = UISearchBar()
+        //searchBar.delegate = self
+        (self.navigationItem.titleView as! UISearchBar).delegate = self
+        //(self.navigationItem.titleView as! UISearchBar).becomeFirstResponder()
         //errorButton.hidden = true
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
@@ -40,7 +44,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         
        // EZLoadingActivity.hide()
         collectionView.dataSource = self
-        searchBar.delegate = self
+        
         //collectionView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -269,7 +273,11 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     func dismissKeyboard() {
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
-        view.endEditing(true)
+        
+        print("hey you")
+        //(self.navigationItem.titleView as! UISearchBar).resignFirstResponder()
+        self.navigationItem.titleView!.endEditing(true)
+        print("yeah you")
     }
     
     

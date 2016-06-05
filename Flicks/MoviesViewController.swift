@@ -26,8 +26,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
-        view.addGestureRecognizer(tap)
+      
         errorView.hidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
@@ -234,39 +233,53 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         print("hello")
         var query = searchBar.text! as! String
         print("hello 1")
-
-        if let movies = movies {
-            print("hello 2 ")
-            searchedMovies = []
-            for movie in movies {
-                print("hello 3")
-
-                let title = movie["title"] as! String
-                print("hello 4")
-                
-                if title.containsString(query) {
-                    print("hello 5")
-
-                    searchedMovies!.append(movie)
-                    print("hello 6")
-
+        if query == "" {
+            searchedMovies = nil
+            collectionView.reloadData()
+            
+            
+            
+        } else {
+            if let movies = movies {
+                print("hello 2 ")
+                searchedMovies = []
+                for movie in movies {
+                    print("hello 3")
+                    
+                    let title = movie["title"] as! String
+                    print("hello 4")
+                    
+                    if title.containsString(query) {
+                        print("hello 5")
+                        
+                        searchedMovies!.append(movie)
+                        print("hello 6")
+                        
+                        
+                    }
+                    print("hello 7")
                     
                 }
-                print("hello 7")
-
+                print("hello 8")
+                
+                collectionView.reloadData()
+                //searchedMovies = nil
+                print("hello 9")
+                
             }
-            print("hello 8")
 
-            collectionView.reloadData()
-            //searchedMovies = nil
-            print("hello 9")
-
+            
+            
         }
+        
+        //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+        //view.addGestureRecognizer(tap)
         
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
         searchedMovies = nil
+    
         collectionView.reloadData()
     }
     
@@ -275,6 +288,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         //Causes the view (or one of its embedded text fields) to resign the first responder status.
         
         print("hey you")
+         //let tap: UITapGestureRecognizer = UITapGestureRecognizer(target: self, action: "dismissKeyboard")
+       // view.removeGestureRecognizer(tap)
         //(self.navigationItem.titleView as! UISearchBar).resignFirstResponder()
         self.navigationItem.titleView!.endEditing(true)
         print("yeah you")
@@ -286,7 +301,11 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         
         let cell = sender as! UICollectionViewCell
         let indexPath = collectionView.indexPathForCell(cell)
-        let movie = movies![indexPath!.row]
+        
+        var movie = movies![indexPath!.row]
+        if let searchedMovies = searchedMovies {
+            movie = searchedMovies[indexPath!.row]
+        }
         
         
         let detailViewController = segue.destinationViewController as! DetailViewController

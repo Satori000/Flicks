@@ -41,7 +41,7 @@
                                         </view>
                                         <connections>
                                             <outlet property="posterImage" destination="s5R-LR-4RV" id="rL7-lG-xX8"/>
-                                            <segue destination="UMO-S3-x7i" kind="push" id="BrS-Eq-abX"/>
+                                            <segue destination="UMO-S3-x7i" kind="push" id="2f4-KZ-buf"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="818" y="-278"/>
+            <point key="canvasLocation" x="820" y="-413"/>
         </scene>
         <!--Detail-->
         <scene sceneID="9Og-ef-t4A">
@@ -153,7 +153,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6da-gr-qiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1139" y="1"/>
+            <point key="canvasLocation" x="1285" y="-203"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="71b-DU-X1D">

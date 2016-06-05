@@ -2,7 +2,7 @@
 
 **Flicks** is a movies app using the [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **13** hours spent in total
+Time spent: **14** hours spent in total
 
 ## User Stories
 
@@ -74,7 +74,7 @@ The following **required** functionality is completed:
 The following **optional** features are implemented:
 
 - [x] For the large poster, load the low resolution image first and then switch to the high resolution image when complete.
-- [ ] Customize the navigation bar.
+- [x] Customize the navigation bar.
 
 The following **additional** features are implemented:
 

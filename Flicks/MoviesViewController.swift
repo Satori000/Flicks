@@ -16,6 +16,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     @IBOutlet weak var collectionView: UICollectionView!
     
+    @IBOutlet weak var flowLayout: UICollectionViewFlowLayout!
+    
     @IBOutlet weak var errorView: UIView!
     
     var movies: [NSDictionary]?
@@ -34,6 +36,12 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         self.navigationItem.titleView = UISearchBar()
         (self.navigationItem.titleView as! UISearchBar).delegate = self
         
+        flowLayout.itemSize = CGSizeMake(UIScreen.mainScreen().bounds.width / 2, UIScreen.mainScreen().bounds.height / 2.5)
+        flowLayout.minimumLineSpacing = 0
+        flowLayout.minimumInteritemSpacing = 0
+        
+        
+        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex: 0)
@@ -44,7 +52,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         //collectionView.delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)&page=1")
+        
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
             configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),

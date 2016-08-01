@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DetailViewController: UIViewController {
+class DetailViewController: UIViewController, UIScrollViewDelegate {
 
     @IBOutlet weak var titleLabel: UILabel!
     
@@ -25,8 +25,12 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scrollView.delegate = self
+        let screenWidth = UIScreen.mainScreen().bounds.size.width
+        let screenHeight = UIScreen.mainScreen().bounds.size.height
         
-       // scrollView.contentSize = CGSize(width: scrollView.frame.size.width, height: infoView.frame.origin.y + infoView.frame.size.height)
+        //scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
+
         
         
         let title = movie["title"] as! String
@@ -74,7 +78,9 @@ class DetailViewController: UIViewController {
                 // possibly try to get the large image
         })
         
-        
+ 
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
+
         
         
         
@@ -98,7 +104,8 @@ class DetailViewController: UIViewController {
         overviewLabel.sizeToFit()
         
 
-        //posterView.setImageWithURL(<#T##url: NSURL##NSURL#>)
+        //posterView.setImageWithURL(NSURL(string: "https://image.tmdb.org/t/p/original")!)
+
         
         
         // Do any additional setup after loading the view.
@@ -109,6 +116,11 @@ class DetailViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        print("hello")
+        
+    }
 
     /*
     // MARK: - Navigation

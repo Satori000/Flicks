@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F086F191D4F05270099F907 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F086F181D4F05270099F907 /* Reachability.swift */; };
 		1F3499EB1C4DE4360004B418 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3499EA1C4DE4360004B418 /* DetailViewController.swift */; };
 		1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */; };
 		1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1FB501C46EF7300EC6CFB /* AppDelegate.swift */; };
@@ -19,6 +20,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F086F181D4F05270099F907 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1F3499EA1C4DE4360004B418 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		1FD1FB4D1C46EF7300EC6CFB /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +76,7 @@
 				1FD1FB571C46EF7300EC6CFB /* Assets.xcassets */,
 				1FD1FB591C46EF7300EC6CFB /* LaunchScreen.storyboard */,
 				1FD1FB5C1C46EF7300EC6CFB /* Info.plist */,
+				1F086F181D4F05270099F907 /* Reachability.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -238,6 +241,7 @@
 			files = (
 				1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */,
 				1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */,
+				1F086F191D4F05270099F907 /* Reachability.swift in Sources */,
 				1FD1FB631C46F01200EC6CFB /* MoviesViewController.swift in Sources */,
 				1FD1FB661C46F7D300EC6CFB /* MovieCell.swift in Sources */,
 				1F3499EB1C4DE4360004B418 /* DetailViewController.swift in Sources */,

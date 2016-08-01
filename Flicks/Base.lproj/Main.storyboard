@@ -17,8 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enm-sp-eed">
-                                <rect key="frame" x="0.0" y="108" width="320" height="460"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" keyboardDismissMode="onDrag" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="enm-sp-eed">
+                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="V1M-yV-bdL">
                                     <size key="itemSize" width="114" height="144"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -72,10 +72,10 @@
                             <constraint firstItem="Cuw-l5-vIg" firstAttribute="top" secondItem="enm-sp-eed" secondAttribute="bottom" id="9zu-Of-NeR"/>
                             <constraint firstItem="NJY-MF-Yf0" firstAttribute="top" secondItem="hcy-cZ-xcM" secondAttribute="bottom" id="bnm-2M-zpD"/>
                             <constraint firstAttribute="trailing" secondItem="NJY-MF-Yf0" secondAttribute="trailing" id="c9w-gW-Q4P"/>
+                            <constraint firstItem="enm-sp-eed" firstAttribute="top" secondItem="hcy-cZ-xcM" secondAttribute="bottom" id="f2J-NW-GH5"/>
                             <constraint firstItem="enm-sp-eed" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="fY1-LU-Hzx"/>
                             <constraint firstItem="NJY-MF-Yf0" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="hBu-mc-dM2"/>
                             <constraint firstAttribute="trailing" secondItem="enm-sp-eed" secondAttribute="trailing" id="jOJ-cg-wq3"/>
-                            <constraint firstItem="enm-sp-eed" firstAttribute="top" secondItem="NJY-MF-Yf0" secondAttribute="bottom" id="nC5-e4-aVr"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="jn8-RL-wCW"/>
@@ -86,7 +86,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="820" y="-413"/>
+            <point key="canvasLocation" x="757" y="-449"/>
         </scene>
         <!--Detail-->
         <scene sceneID="9Og-ef-t4A">

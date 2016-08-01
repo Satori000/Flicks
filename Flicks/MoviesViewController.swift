@@ -26,17 +26,14 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     override func viewDidLoad() {
         super.viewDidLoad()
-      
         errorView.hidden = true
         self.navigationController?.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
         
         self.navigationController?.navigationBar.barTintColor = UIColor.grayColor()
         self.navigationItem.titleView = UISearchBar()
-        //searchBar.delegate = self
         (self.navigationItem.titleView as! UISearchBar).delegate = self
-        //(self.navigationItem.titleView as! UISearchBar).becomeFirstResponder()
-        //errorButton.hidden = true
+        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex: 0)
@@ -100,6 +97,27 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
             delegate:nil,
             delegateQueue:NSOperationQueue.mainQueue()
         )
+
+        let reachability: Reachability
+        do {
+            reachability = try Reachability.reachabilityForInternetConnection()
+        } catch {
+            print("Unable to create Reachability")
+            return
+        }
+        
+        if reachability.isReachable() {
+            if reachability.isReachableViaWiFi() {
+                print("Reachable via WiFi")
+            } else {
+                print("Reachable via Cellular")
+            }
+            errorView.hidden = true
+        } else {
+            print("Network not reachable")
+            errorView.hidden = false
+        }
+        
         let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
             completionHandler: { (dataOrNil, response, error) in
                 if (error != nil) {
@@ -107,7 +125,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
                 }
                 if let data = dataOrNil {
                     print("hello why are you working")
-                    self.errorView.hidden = true
+                    //self.errorView.hidden = true
                     if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
                         data, options:[]) as? NSDictionary {
                             //NSLog("response: \(responseDictionary)")
@@ -124,7 +142,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
                 }
                 else {
                     print("............nothing Shown2")
-                    self.errorView.hidden = false
+                    //self.errorView.hidden = false
                     //self.view.bringSubviewToFront(self.errorView)
                    // self.view.bringSubviewToFront(<#T##view: UIView##UIView#>)
                     //self.errorButton.hidden = false

@@ -61,7 +61,7 @@ CocoaPods did not install initially due to changes to OS X El Capitan.
 
 **Flicks** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **3** hours spent in total
+Time spent: **10** hours spent in total
 
 ## User Stories
 
@@ -78,7 +78,10 @@ The following **optional** features are implemented:
 
 The following **additional** features are implemented:
 
-- [ ] List anything else that you can get done to improve the app functionality!
+- [x] Infinite scrolling on each list of movies
+- [x] Upcoming and Popular movie lists added, each with their own tab bar item
+- [x] Trailers of movies on YouTube can be opened straight from the details view controller
+
 
 ## Video Walkthrough 
 

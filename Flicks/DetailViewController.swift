@@ -226,14 +226,21 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
         
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.destinationViewController is CreditViewController {
+            (segue.destinationViewController as! CreditViewController).id = movie!["id"] as! Int
+            
+        } else if segue.destinationViewController is ReviewViewController {
+            (segue.destinationViewController as! ReviewViewController).id = movie!["id"] as! Int
+        }
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

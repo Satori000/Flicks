@@ -11,6 +11,9 @@
 		1F3499EB1C4DE4360004B418 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3499EA1C4DE4360004B418 /* DetailViewController.swift */; };
 		1F92E2E81D519623005F1374 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2E71D519623005F1374 /* VideoCell.swift */; };
 		1F92E2EA1D525380005F1374 /* InfiniteScrollActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2E91D525380005F1374 /* InfiniteScrollActivityView.swift */; };
+		1F92E2F21D527403005F1374 /* CreditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2F11D527403005F1374 /* CreditViewController.swift */; };
+		1F92E2F41D52740F005F1374 /* ReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2F31D52740F005F1374 /* ReviewViewController.swift */; };
+		1F92E2F61D5279E4005F1374 /* PersonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2F51D5279E4005F1374 /* PersonCell.swift */; };
 		1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */; };
 		1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1FB501C46EF7300EC6CFB /* AppDelegate.swift */; };
 		1FD1FB561C46EF7300EC6CFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD1FB541C46EF7300EC6CFB /* Main.storyboard */; };
@@ -26,6 +29,9 @@
 		1F3499EA1C4DE4360004B418 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		1F92E2E71D519623005F1374 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		1F92E2E91D525380005F1374 /* InfiniteScrollActivityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfiniteScrollActivityView.swift; sourceTree = "<group>"; };
+		1F92E2F11D527403005F1374 /* CreditViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreditViewController.swift; sourceTree = "<group>"; };
+		1F92E2F31D52740F005F1374 /* ReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewViewController.swift; sourceTree = "<group>"; };
+		1F92E2F51D5279E4005F1374 /* PersonCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonCell.swift; sourceTree = "<group>"; };
 		1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		1FD1FB4D1C46EF7300EC6CFB /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD1FB501C46EF7300EC6CFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -83,6 +89,9 @@
 				1F086F181D4F05270099F907 /* Reachability.swift */,
 				1F92E2E71D519623005F1374 /* VideoCell.swift */,
 				1F92E2E91D525380005F1374 /* InfiniteScrollActivityView.swift */,
+				1F92E2F11D527403005F1374 /* CreditViewController.swift */,
+				1F92E2F31D52740F005F1374 /* ReviewViewController.swift */,
+				1F92E2F51D5279E4005F1374 /* PersonCell.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -247,9 +256,12 @@
 			files = (
 				1F92E2EA1D525380005F1374 /* InfiniteScrollActivityView.swift in Sources */,
 				1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */,
+				1F92E2F41D52740F005F1374 /* ReviewViewController.swift in Sources */,
 				1F92E2E81D519623005F1374 /* VideoCell.swift in Sources */,
 				1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */,
 				1F086F191D4F05270099F907 /* Reachability.swift in Sources */,
+				1F92E2F21D527403005F1374 /* CreditViewController.swift in Sources */,
+				1F92E2F61D5279E4005F1374 /* PersonCell.swift in Sources */,
 				1FD1FB631C46F01200EC6CFB /* MoviesViewController.swift in Sources */,
 				1FD1FB661C46F7D300EC6CFB /* MovieCell.swift in Sources */,
 				1F3499EB1C4DE4360004B418 /* DetailViewController.swift in Sources */,

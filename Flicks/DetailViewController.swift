@@ -63,51 +63,58 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
         let title = movie!["title"] as! String
 
         let overview = movie!["overview"] as! String
+        print("before pp")
         let posterPath = movie!["poster_path"] as? String
+        print("after pp \(posterPath)")
 
         let highResBaseUrl = "https://image.tmdb.org/t/p/original"
         let lowResBaseUrl = "https://image.tmdb.org/t/p/w45"
 
-        let smallImageRequest = NSURLRequest(URL: NSURL(string: lowResBaseUrl + posterPath!)!)
-        let largeImageRequest = NSURLRequest(URL: NSURL(string: highResBaseUrl + posterPath!)!)
+        print("after all")
+        if posterPath != nil {
+            let smallImageRequest = NSURLRequest(URL: NSURL(string: lowResBaseUrl + posterPath!)!)
+            let largeImageRequest = NSURLRequest(URL: NSURL(string: highResBaseUrl + posterPath!)!)
 
-        self.posterView.setImageWithURLRequest(
-            smallImageRequest,
-            placeholderImage: nil,
-            success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
-                
-                // smallImageResponse will be nil if the smallImage is already available
-                // in cache (might want to do something smarter in that case).
-                self.posterView.alpha = 0.0
-                self.posterView.image = smallImage;
-               
-
-                
-                UIView.animateWithDuration(0.3, animations: { () -> Void in
+            self.posterView.setImageWithURLRequest(
+                smallImageRequest,
+                placeholderImage: nil,
+                success: { (smallImageRequest, smallImageResponse, smallImage) -> Void in
                     
-                    self.posterView.alpha = 1.0
+                    // smallImageResponse will be nil if the smallImage is already available
+                    // in cache (might want to do something smarter in that case).
+                    self.posterView.alpha = 0.0
+                    self.posterView.image = smallImage;
                     
-                    }, completion: { (sucess) -> Void in
+                    
+                    
+                    UIView.animateWithDuration(0.3, animations: { () -> Void in
                         
-                        // The AFNetworking ImageView Category only allows one request to be sent at a time
-                        // per ImageView. This code must be in the completion block.
-                        self.posterView.setImageWithURLRequest(
-                            largeImageRequest,
-                            placeholderImage: smallImage,
-                            success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
-                                
-                                self.posterView.image = largeImage;
-                            },
-                            failure: { (request, response, error) -> Void in
-                                // do something for the failure condition of the large image request
-                                // possibly setting the ImageView's image to a default image
-                        })
-                })
-            },
-            failure: { (request, response, error) -> Void in
-                // do something for the failure condition
-                // possibly try to get the large image
-        }) 
+                        self.posterView.alpha = 1.0
+                        
+                        }, completion: { (sucess) -> Void in
+                            
+                            // The AFNetworking ImageView Category only allows one request to be sent at a time
+                            // per ImageView. This code must be in the completion block.
+                            self.posterView.setImageWithURLRequest(
+                                largeImageRequest,
+                                placeholderImage: smallImage,
+                                success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
+                                    
+                                    self.posterView.image = largeImage;
+                                },
+                                failure: { (request, response, error) -> Void in
+                                    // do something for the failure condition of the large image request
+                                    // possibly setting the ImageView's image to a default image
+                            })
+                    })
+                },
+                failure: { (request, response, error) -> Void in
+                    // do something for the failure condition
+                    // possibly try to get the large image
+            }) 
+
+            
+        }
         
         //scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
 

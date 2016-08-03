@@ -30,6 +30,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     var isMoreDataLoading = false
     var page = 2
     
+    var loadingMoreView:InfiniteScrollActivityView?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         errorView.hidden = true
@@ -39,6 +41,17 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         self.navigationController?.navigationBar.barTintColor = UIColor.grayColor()
         self.navigationItem.titleView = UISearchBar()
         (self.navigationItem.titleView as! UISearchBar).delegate = self
+        
+        // Set up Infinite Scroll loading indicator
+        let frame = CGRectMake(0, collectionView.contentSize.height, collectionView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+        loadingMoreView = InfiniteScrollActivityView(frame: frame)
+        loadingMoreView!.hidden = true
+        collectionView.addSubview(loadingMoreView!)
+        
+        var insets = collectionView.contentInset;
+        insets.bottom += InfiniteScrollActivityView.defaultHeight;
+        collectionView.contentInset = insets
+        
         
         flowLayout.itemSize = CGSizeMake(UIScreen.mainScreen().bounds.width / 2, UIScreen.mainScreen().bounds.height / 2.5)
         flowLayout.minimumLineSpacing = 0
@@ -100,7 +113,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     func onRefresh() {
         EZLoadingActivity.show("Loading...", disableUI: true)
-       
+        page = 2
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         let request = NSURLRequest(URL: url!)
@@ -328,17 +341,19 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         // Handle scroll behavior here
-        print("hello")
         if (!isMoreDataLoading) {
             
-            print("hello 0")
             let scrollViewContentHeight = collectionView.contentSize.height
             let scrollOffsetThreshold = scrollViewContentHeight - collectionView.bounds.size.height
             
             // When the user has scrolled past the threshold, start requesting
             if(scrollView.contentOffset.y > scrollOffsetThreshold && collectionView.dragging) {
                 isMoreDataLoading = true
-                print("hello1")
+                
+                let frame = CGRectMake(0, collectionView.contentSize.height, collectionView.bounds.size.width, InfiniteScrollActivityView.defaultHeight)
+                loadingMoreView?.frame = frame
+                loadingMoreView!.startAnimating()
+                
                 loadMoreData()
                 // ... Code to load more results ...
             }
@@ -380,8 +395,14 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
                         self.movies!.append(movie)
                     }
                     self.isMoreDataLoading = false
-
-                    self.collectionView.reloadData()
+                    self.delay(1.0) {
+                        // delayed code, by default run in main thread
+                        self.loadingMoreView!.stopAnimating()
+                        self.collectionView.reloadData()
+                    }
+                    
+                    
+                   
                 }
                 print("Something shown")
                 } else {
@@ -402,6 +423,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         let indexPath = collectionView.indexPathForCell(cell)
 
         var movie = movies![indexPath!.row]
+        print("movie: \(movie)")
         if let searchedMovies = searchedMovies {
             movie = searchedMovies[indexPath!.row]
         }

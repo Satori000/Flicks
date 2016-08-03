@@ -7,40 +7,70 @@
 //
 
 import UIKit
+import YouTubePlayer
 
-class DetailViewController: UIViewController, UIScrollViewDelegate {
+class DetailViewController: UIViewController, UIScrollViewDelegate, UICollectionViewDelegate, UICollectionViewDataSource {
 
+   
     @IBOutlet weak var titleLabel: UILabel!
     
     @IBOutlet weak var overviewLabel: UILabel!
     
     @IBOutlet weak var posterView: UIImageView!
     
+    //@IBOutlet weak var videoPlayer: YouTubePlayerView!
     
-    @IBOutlet weak var scrollView: UIScrollView!
+    
     
     @IBOutlet weak var infoView: UIView!
     
-    var movie: NSDictionary!
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var videoCollection: UICollectionView!
+    
+    var movie: NSDictionary?
+    var videos: [NSDictionary]?    
+
+    var videoPlayers: [YouTubePlayerView]?
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         scrollView.delegate = self
+
+        videoCollection.delegate = self
+        videoCollection.dataSource = self
         let screenWidth = UIScreen.mainScreen().bounds.size.width
         let screenHeight = UIScreen.mainScreen().bounds.size.height
+        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 2)
+
+        print("size: \(scrollView.contentSize)")
         
-        //scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
+        infoView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
+        videoCollection.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+     
+        print("why aren't you working")
+        
+        print(screenWidth)
 
         
+        print(movie)
+        print(screenWidth)
+        print(screenHeight)
         
-        let title = movie["title"] as! String
-        let overview = movie["overview"] as! String
-        let posterPath = movie["poster_path"] as? String
+
+       
+        let title = movie!["title"] as! String
+
+        let overview = movie!["overview"] as! String
+        let posterPath = movie!["poster_path"] as? String
+
         let highResBaseUrl = "https://image.tmdb.org/t/p/original"
         let lowResBaseUrl = "https://image.tmdb.org/t/p/w45"
+
         let smallImageRequest = NSURLRequest(URL: NSURL(string: lowResBaseUrl + posterPath!)!)
         let largeImageRequest = NSURLRequest(URL: NSURL(string: highResBaseUrl + posterPath!)!)
-        
+
         self.posterView.setImageWithURLRequest(
             smallImageRequest,
             placeholderImage: nil,
@@ -50,6 +80,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                 // in cache (might want to do something smarter in that case).
                 self.posterView.alpha = 0.0
                 self.posterView.image = smallImage;
+               
+
                 
                 UIView.animateWithDuration(0.3, animations: { () -> Void in
                     
@@ -65,7 +97,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
                             success: { (largeImageRequest, largeImageResponse, largeImage) -> Void in
                                 
                                 self.posterView.image = largeImage;
-                                
                             },
                             failure: { (request, response, error) -> Void in
                                 // do something for the failure condition of the large image request
@@ -76,13 +107,52 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             failure: { (request, response, error) -> Void in
                 // do something for the failure condition
                 // possibly try to get the large image
-        })
+        }) 
         
- 
-        scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
+        //scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)
+
+        print("heyyyyyyy")
 
         
         
+        let id = movie!["id"]!
+        print("id: \(id)")
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(id)/videos?api_key=\(apiKey)")
+        
+        let request = NSURLRequest(URL: url!)
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, response, error) in
+                if let data = dataOrNil {
+                    print("hello why are you working 0")
+                    
+                    if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                        data, options:[]) as? NSDictionary {
+                        //NSLog("response: \(responseDictionary)")
+                                                                                
+                        print(responseDictionary)
+                        
+                        let results = responseDictionary["results"] as! [NSDictionary]
+                        
+                        self.videos = results
+                        self.videoCollection.reloadData()
+                        //let key = results[0]["key"]! as! String
+                        print("results: \(results)")
+                        //self.videoPlayer.loadVideoID(key)
+                        
+                        }
+                    } else {
+                        print("..........nothing shown0")
+                                                                            
+                    }
+        });
+        task.resume()
         
         
         
@@ -106,9 +176,32 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
 
         //posterView.setImageWithURL(NSURL(string: "https://image.tmdb.org/t/p/original")!)
 
-        
+ 
         
         // Do any additional setup after loading the view.
+    }
+    
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if let videos = videos {
+            print("count: \(videos.count)")
+            return videos.count
+        } else {
+            print(0)
+            return 0
+        }
+    }
+    
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = videoCollection.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
+        
+        let video = videos![indexPath.row]
+        let key = video["key"] as! String
+        
+        cell.videoPlayer.loadVideoID(key)
+        
+        
+        return cell
     }
 
     override func didReceiveMemoryWarning() {
@@ -119,6 +212,10 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         print("hello")
+        
+        //let topConstraint = NSLayoutConstraint(item: infoView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 189 - //scrollView.contentOffset.consta)
+        
+       // view.addConstraint(horizontalConstraint)
         
     }
 

@@ -10,7 +10,7 @@ import UIKit
 import AFNetworking
 import EZLoadingActivity
 
-class MoviesViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate {
+class MoviesViewController: UIViewController, UICollectionViewDataSource, UISearchBarDelegate, UIScrollViewDelegate {
 
     //@IBOutlet weak var searchBar: UISearchBar!
     
@@ -20,11 +20,15 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
     
     @IBOutlet weak var errorView: UIView!
     
+    
     var movies: [NSDictionary]?
     var searchedMovies: [NSDictionary]?
     var refreshControl: UIRefreshControl!
     
     var endpoint: String!
+    
+    var isMoreDataLoading = false
+    var page = 2
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -40,8 +44,6 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         flowLayout.minimumLineSpacing = 0
         flowLayout.minimumInteritemSpacing = 0
         
-        
-        
         refreshControl = UIRefreshControl()
         refreshControl.addTarget(self, action: "onRefresh", forControlEvents: UIControlEvents.ValueChanged)
         collectionView.insertSubview(refreshControl, atIndex: 0)
@@ -49,10 +51,10 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
        // EZLoadingActivity.hide()
         collectionView.dataSource = self
         
-        //collectionView.delegate = self
+        (collectionView as! UIScrollView).delegate = self
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)&page=1")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)")
         
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
@@ -84,7 +86,6 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
                 }
         });
         task.resume()
-       
     }
     
     
@@ -93,6 +94,8 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         
         onRefresh()
     }
+    
+    
  
     
     func onRefresh() {
@@ -209,6 +212,7 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         }
         
         
+        print(movie!["title"])
         if let posterPath = movie!["poster_path"] as? String {
             let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
             //let posterUrl = NSURL(string: posterBaseUrl + posterPath)
@@ -322,23 +326,91 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         print("yeah you")
     }
     
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        // Handle scroll behavior here
+        print("hello")
+        if (!isMoreDataLoading) {
+            
+            print("hello 0")
+            let scrollViewContentHeight = collectionView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - collectionView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && collectionView.dragging) {
+                isMoreDataLoading = true
+                print("hello1")
+                loadMoreData()
+                // ... Code to load more results ...
+            }
+            
+            
+            // ... Code to load more results ...
+            
+        }
+        
+    }
+    
+    func loadMoreData() {
+        print("hello2")
+        
+        
+        let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(endpoint)?api_key=\(apiKey)&page=\(page)")
+        page += 1
+        let request = NSURLRequest(URL: url!)
+        let session = NSURLSession(
+            configuration: NSURLSessionConfiguration.defaultSessionConfiguration(),
+            delegate:nil,
+            delegateQueue:NSOperationQueue.mainQueue()
+        )
+        
+        let task : NSURLSessionDataTask = session.dataTaskWithRequest(request,
+            completionHandler: { (dataOrNil, response, error) in
+            if let data = dataOrNil {
+                print("hello why are you working 0")
+                                                                            
+                self.errorView.hidden = true
+                                                                            
+                if let responseDictionary = try! NSJSONSerialization.JSONObjectWithData(
+                    data, options:[]) as?NSDictionary {
+                    //NSLog("response: \(responseDictionary)")
+                                                                                
+                    let moviesPage = responseDictionary["results"] as? [NSDictionary]
+                    for movie in moviesPage! {
+                        self.movies!.append(movie)
+                    }
+                    self.isMoreDataLoading = false
+
+                    self.collectionView.reloadData()
+                }
+                print("Something shown")
+                } else {
+                    print("..........nothing shown0")
+                    self.errorView.hidden = false
+                                                                            
+                                                                            
+                }
+        });
+        task.resume()
+        
+    }
     
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+
         let cell = sender as! UICollectionViewCell
         let indexPath = collectionView.indexPathForCell(cell)
-        
+
         var movie = movies![indexPath!.row]
         if let searchedMovies = searchedMovies {
             movie = searchedMovies[indexPath!.row]
         }
-        
+
         
         let detailViewController = segue.destinationViewController as! DetailViewController
+
         
         detailViewController.movie = movie
-        
     }
 
 }

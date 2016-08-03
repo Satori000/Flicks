@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		1F086F191D4F05270099F907 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F086F181D4F05270099F907 /* Reachability.swift */; };
 		1F3499EB1C4DE4360004B418 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F3499EA1C4DE4360004B418 /* DetailViewController.swift */; };
+		1F92E2E81D519623005F1374 /* VideoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F92E2E71D519623005F1374 /* VideoCell.swift */; };
 		1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */; };
 		1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FD1FB501C46EF7300EC6CFB /* AppDelegate.swift */; };
 		1FD1FB561C46EF7300EC6CFB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1FD1FB541C46EF7300EC6CFB /* Main.storyboard */; };
@@ -22,6 +23,7 @@
 /* Begin PBXFileReference section */
 		1F086F181D4F05270099F907 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		1F3499EA1C4DE4360004B418 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
+		1F92E2E71D519623005F1374 /* VideoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VideoCell.swift; sourceTree = "<group>"; };
 		1FBEDD571CEFFD7F0044AD62 /* MovieCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MovieCollectionCell.swift; sourceTree = "<group>"; };
 		1FD1FB4D1C46EF7300EC6CFB /* Flicks.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Flicks.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1FD1FB501C46EF7300EC6CFB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 				1FD1FB591C46EF7300EC6CFB /* LaunchScreen.storyboard */,
 				1FD1FB5C1C46EF7300EC6CFB /* Info.plist */,
 				1F086F181D4F05270099F907 /* Reachability.swift */,
+				1F92E2E71D519623005F1374 /* VideoCell.swift */,
 			);
 			path = Flicks;
 			sourceTree = "<group>";
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FD1FB511C46EF7300EC6CFB /* AppDelegate.swift in Sources */,
+				1F92E2E81D519623005F1374 /* VideoCell.swift in Sources */,
 				1FBEDD581CEFFD7F0044AD62 /* MovieCollectionCell.swift in Sources */,
 				1F086F191D4F05270099F907 /* Reachability.swift in Sources */,
 				1FD1FB631C46F01200EC6CFB /* MoviesViewController.swift in Sources */,

@@ -8,17 +8,22 @@
 
 import UIKit
 
-class ReviewViewController: UIViewController {
+class ReviewViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
 
+    @IBOutlet weak var tableView: UITableView!
+    
     var id: Int?
+    var reviews: [NSDictionary]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        tableView.delegate = self
+        tableView.dataSource = self
+        
         print(id!)
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
-        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(id!)/credits?api_key=\(apiKey)")
+        let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(id!)/reviews?api_key=\(apiKey)")
         
         let request = NSURLRequest(URL: url!)
         let session = NSURLSession(
@@ -36,7 +41,12 @@ class ReviewViewController: UIViewController {
                 //NSLog("response: \(responseDictionary)")
                                                                                 
                 let result = responseDictionary as? NSDictionary
+                self.reviews = result!["results"] as? [NSDictionary]
+                
+                
                 print("result: \(result)")
+                
+                self.tableView.reloadData()
                 }
             } else {
                 print("..........nothing shown0")
@@ -55,6 +65,24 @@ class ReviewViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        if let reviews = reviews {
+            return reviews.count
+        } else {
+            return 0
+        }
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("ReviewCell", forIndexPath: indexPath) as! ReviewCell
+        
+        let review = reviews![indexPath.row]
+        
+        cell.authorLabel.text = review["author"] as! String
+        cell.contentLabel.text = review["content"] as! String
+        
+        return cell
+    }
 
     /*
     // MARK: - Navigation

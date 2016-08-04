@@ -14,6 +14,8 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var id: Int?
     var cast: [NSDictionary]?
+    var crew: [NSDictionary]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -41,8 +43,12 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
                     //NSLog("response: \(responseDictionary)")
                                                                                 
                     let result = responseDictionary as? NSDictionary
-                    self.cast = result!["cast"] as! [NSDictionary]
+                    self.cast = result!["cast"] as? [NSDictionary]
+                    self.crew = result!["crew"] as? [NSDictionary]
+                    
                     print("cast: \(self.cast)")
+                    print("crew: \(self.crew)")
+                    
                     self.tableView.reloadData()
                     }
                 } else {
@@ -62,66 +68,135 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
         // Dispose of any resources that can be recreated.
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let cast = cast {
-            return cast.count
-        } else {
-            return 0
+ 
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 2
+    }
+    
+    func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        
+        if section == 0 {
+            return "Cast"
+        } else if section == 1 {
+            return "Crew"
         }
+        
+        return "not a real header"
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if let cast = cast {
+            print("cast reached")
+            if section == 0 {
+                return cast.count
+            }
+            
+        }
+        if let crew = crew {
+            print("crew reached")
+            if section == 1 {
+                return crew.count
+            }
+            
+        }
+        print("hello you reached 0")
+        return 0
+        
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("PersonCell", forIndexPath: indexPath) as! PersonCell
         
-        let castMember = cast![indexPath.row] as! NSDictionary
+        var castMember: NSDictionary
+        var crewMember: NSDictionary
+        print("indexPath: \(indexPath)")
         
-        let name = castMember["name"] as! String
-        let character = castMember["character"] as! String
         
-        cell.nameLabel.text = name
-        cell.characterLabel.text = character
-        if let posterPath = castMember["profile_path"] as? String {
-            let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
-            //let posterUrl = NSURL(string: posterBaseUrl + posterPath)
-            //cell.posterView.setImageWithURL(posterUrl!)
+        if indexPath.section == 1 {
+            crewMember = crew![indexPath.row] as! NSDictionary
             
-            //new code after this
+            let name = crewMember["name"] as! String
+            let job = crewMember["job"] as! String
             
-            //let imageUrl = "https://i.imgur.com/tGbaZCY.jpg"
-            let imageRequest = NSURLRequest(URL: NSURL(string: posterBaseUrl + posterPath)!)
+            cell.nameLabel.text = name
+            cell.characterLabel.text = job
             
-            cell.actorPhotoView.setImageWithURLRequest(
-                imageRequest,
-                placeholderImage: nil,
-                success: { (imageRequest, imageResponse, image) -> Void in
-                    
-                    // imageResponse will be nil if the image is cached
-                    if imageResponse != nil {
-                        //print("Image was NOT cached, fade in image")
-                        cell.actorPhotoView.alpha = 0.0
-                        cell.actorPhotoView.image = image
-                        UIView.animateWithDuration(0.3, animations: { () -> Void in
-                            cell.actorPhotoView.alpha = 1.0
-                        })
-                    } else {
-                        //print("Image was cached so just update the image")
-                        cell.actorPhotoView.image = image
-                    }
-                },
-                failure: { (imageRequest, imageResponse, error) -> Void in
-                    // do something for the failure condition
-            })
+            if let posterPath = crewMember["profile_path"] as? String {
+                let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+            
+                let imageRequest = NSURLRequest(URL: NSURL(string: posterBaseUrl + posterPath)!)
+                
+                cell.actorPhotoView.setImageWithURLRequest(
+                    imageRequest,
+                    placeholderImage: nil,
+                    success: { (imageRequest, imageResponse, image) -> Void in
+                        
+                        // imageResponse will be nil if the image is cached
+                        if imageResponse != nil {
+                            //print("Image was NOT cached, fade in image")
+                            cell.actorPhotoView.alpha = 0.0
+                            cell.actorPhotoView.image = image
+                            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                                cell.actorPhotoView.alpha = 1.0
+                            })
+                        } else {
+                            //print("Image was cached so just update the image")
+                            cell.actorPhotoView.image = image
+                        }
+                    },
+                    failure: { (imageRequest, imageResponse, error) -> Void in
+                        // do something for the failure condition
+                })
+            }
+            else {
+                // No poster image. Can either set to nil (no image) or a default movie poster image
+                // that you include as an asset
+                cell.actorPhotoView.image = nil
+            }
+            
+        } else {
+            castMember = cast![indexPath.row] as! NSDictionary
+            
+            let name = castMember["name"] as! String
+            let character = castMember["character"] as! String
+            
+            cell.nameLabel.text = name
+            cell.characterLabel.text = character
+            if let posterPath = castMember["profile_path"] as? String {
+                let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
+                
+                let imageRequest = NSURLRequest(URL: NSURL(string: posterBaseUrl + posterPath)!)
+                
+                cell.actorPhotoView.setImageWithURLRequest(
+                    imageRequest,
+                    placeholderImage: nil,
+                    success: { (imageRequest, imageResponse, image) -> Void in
+                        
+                        // imageResponse will be nil if the image is cached
+                        if imageResponse != nil {
+                            //print("Image was NOT cached, fade in image")
+                            cell.actorPhotoView.alpha = 0.0
+                            cell.actorPhotoView.image = image
+                            UIView.animateWithDuration(0.3, animations: { () -> Void in
+                                cell.actorPhotoView.alpha = 1.0
+                            })
+                        } else {
+                            //print("Image was cached so just update the image")
+                            cell.actorPhotoView.image = image
+                        }
+                    },
+                    failure: { (imageRequest, imageResponse, error) -> Void in
+                        // do something for the failure condition
+                })
+            }
+            else {
+                // No poster image. Can either set to nil (no image) or a default movie poster image
+                // that you include as an asset
+                cell.actorPhotoView.image = nil
+            }
+            
+            
         }
-        else {
-            // No poster image. Can either set to nil (no image) or a default movie poster image
-            // that you include as an asset
-            cell.actorPhotoView.image = nil
-        }
-
-        
-        
-        
-        
-        
         
         return cell
     }

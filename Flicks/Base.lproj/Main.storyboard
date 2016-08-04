@@ -129,74 +129,46 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Rp-fg-kiN">
-                                                        <rect key="frame" x="0.0" y="-384" width="320" height="1116"/>
+                                                        <rect key="frame" x="0.0" y="-523" width="320" height="1001"/>
                                                         <subviews>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Dark Knigh Rises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vCl-wK-DKP">
                                                                 <rect key="frame" x="8" y="13" width="277" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="19"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UWU-iP-Noc">
-                                                                <rect key="frame" x="8" y="105" width="304" height="176"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <rect key="frame" x="7" y="82" width="304" height="153"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                                <color key="textColor" red="0.95891426282051284" green="0.95891426282051284" blue="0.95891426282051284" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y9E-0R-gYQ">
-                                                                <rect key="frame" x="0.0" y="385" width="320" height="102"/>
-                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FCP-ac-riW">
-                                                                    <size key="itemSize" width="160" height="85"/>
-                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
-                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
-                                                                </collectionViewFlowLayout>
-                                                                <cells>
-                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="o86-bN-20Y" customClass="VideoCell" customModule="Flicks" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="9" width="160" height="85"/>
-                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="160" height="85"/>
-                                                                            <autoresizingMask key="autoresizingMask"/>
-                                                                            <subviews>
-                                                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-Xt-Q9F" customClass="YouTubePlayerView" customModule="YouTubePlayer">
-                                                                                    <rect key="frame" x="4" y="4" width="152" height="77"/>
-                                                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                                                                </view>
-                                                                            </subviews>
-                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        </view>
-                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                                                        <connections>
-                                                                            <outlet property="videoPlayer" destination="Zyf-Xt-Q9F" id="FhN-kz-zi0"/>
-                                                                        </connections>
-                                                                    </collectionViewCell>
-                                                                </cells>
-                                                            </collectionView>
                                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BbR-FH-FHu">
-                                                                <rect key="frame" x="0.0" y="289" width="320" height="43"/>
+                                                                <rect key="frame" x="0.0" y="262" width="320" height="43"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Cast &amp; Crew" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tt3-S5-DxN">
-                                                                        <rect key="frame" x="14" y="11" width="185" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <rect key="frame" x="8" y="6" width="193" height="32"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <color key="textColor" red="0.98084935897435899" green="0.98084935897435899" blue="0.98084935897435899" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <accessibility key="accessibilityConfiguration">
+                                                                    <accessibilityTraits key="traits" selected="YES"/>
+                                                                </accessibility>
                                                                 <gestureRecognizers/>
                                                                 <connections>
                                                                     <outletCollection property="gestureRecognizers" destination="XI5-Mn-nSK" appends="YES" id="vww-xj-JtT"/>
                                                                 </connections>
                                                             </view>
                                                             <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aKV-jP-FtN">
-                                                                <rect key="frame" x="0.0" y="335" width="320" height="43"/>
+                                                                <rect key="frame" x="0.0" y="304" width="320" height="43"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EC-bw-7gC">
-                                                                        <rect key="frame" x="13" y="11" width="185" height="21"/>
-                                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                        <rect key="frame" x="8" y="6" width="192" height="32"/>
+                                                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                                                        <color key="textColor" red="0.96051682692307694" green="0.96051682692307694" blue="0.96051682692307694" alpha="1" colorSpace="calibratedRGB"/>
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                 </subviews>
@@ -207,24 +179,24 @@
                                                                 </connections>
                                                             </view>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9fp-HM-lz0">
-                                                                <rect key="frame" x="0.0" y="527" width="320" height="132"/>
+                                                                <rect key="frame" x="0.0" y="529" width="320" height="189"/>
                                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Z2z-Ga-b1D">
-                                                                    <size key="itemSize" width="155" height="125"/>
+                                                                    <size key="itemSize" width="137" height="175"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="PosterCell" id="SCY-mi-qAP" customClass="PosterCell" customModule="Flicks" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="4" width="155" height="125"/>
+                                                                        <rect key="frame" x="0.0" y="7" width="137" height="175"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="155" height="125"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="137" height="175"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ccd-6y-k29">
-                                                                                    <rect key="frame" x="8" y="6" width="135" height="113"/>
+                                                                                    <rect key="frame" x="8" y="6" width="121" height="161"/>
                                                                                     <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                                                 </imageView>
                                                                             </subviews>
@@ -237,41 +209,42 @@
                                                                 </cells>
                                                             </collectionView>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Release Date: May 5, 2013" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6ci-SV-Ldd">
-                                                                <rect key="frame" x="8" y="47" width="277" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <rect key="frame" x="8" y="34" width="277" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.96941105769230773" green="0.96941105769230773" blue="0.96941105769230773" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="8.5/10 Average Rating" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ih4-52-F3z">
-                                                                <rect key="frame" x="8" y="76" width="185" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <rect key="frame" x="8" y="58" width="170" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="5130 Ratings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M4L-Gi-Eiq">
-                                                                <rect key="frame" x="201" y="76" width="107" height="21"/>
-                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                <rect key="frame" x="186" y="58" width="107" height="21"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                <color key="textColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="calibratedRGB"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
                                                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="z0D-bP-mwj">
-                                                                <rect key="frame" x="0.0" y="699" width="320" height="106"/>
+                                                                <rect key="frame" x="0.0" y="747" width="320" height="186"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Ryd-2l-2Z1">
-                                                                    <size key="itemSize" width="93" height="102"/>
+                                                                    <size key="itemSize" width="137" height="180"/>
                                                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                                                 </collectionViewFlowLayout>
                                                                 <cells>
                                                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="SimilarMovieCell" id="phK-f8-oTM" customClass="SimilarMovieCell" customModule="Flicks" customModuleProvider="target">
-                                                                        <rect key="frame" x="0.0" y="2" width="93" height="102"/>
+                                                                        <rect key="frame" x="0.0" y="3" width="137" height="180"/>
                                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                                                            <rect key="frame" x="0.0" y="0.0" width="93" height="102"/>
+                                                                            <rect key="frame" x="0.0" y="0.0" width="137" height="180"/>
                                                                             <autoresizingMask key="autoresizingMask"/>
                                                                             <subviews>
                                                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w0K-j3-WbC">
-                                                                                    <rect key="frame" x="8" y="3" width="77" height="96"/>
+                                                                                    <rect key="frame" x="8" y="3" width="121" height="169"/>
                                                                                 </imageView>
                                                                             </subviews>
                                                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -283,20 +256,87 @@
                                                                     </collectionViewCell>
                                                                 </cells>
                                                             </collectionView>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Posters &amp; Backdrops" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dRF-VP-zxH">
+                                                                <rect key="frame" x="8" y="505" width="203" height="24"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Similar Movies" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rJI-H5-gz3">
+                                                                <rect key="frame" x="8" y="719" width="134" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Trailers &amp; Teasers" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIl-Jh-0At">
+                                                                <rect key="frame" x="8" y="356" width="262" height="27"/>
+                                                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VrY-Cv-6Qm">
+                                                                <rect key="frame" x="8" y="746" width="312" height="2"/>
+                                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dop-d4-Uh3">
+                                                                <rect key="frame" x="8" y="530" width="312" height="2"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </view>
+                                                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bex-81-M4h">
+                                                                <rect key="frame" x="7" y="381" width="312" height="2"/>
+                                                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                            </view>
+                                                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="y9E-0R-gYQ">
+                                                                <rect key="frame" x="0.0" y="382" width="320" height="118"/>
+                                                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="FCP-ac-riW">
+                                                                    <size key="itemSize" width="195" height="109"/>
+                                                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                                                </collectionViewFlowLayout>
+                                                                <cells>
+                                                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="VideoCell" id="o86-bN-20Y" customClass="VideoCell" customModule="Flicks" customModuleProvider="target">
+                                                                        <rect key="frame" x="0.0" y="5" width="195" height="109"/>
+                                                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                                            <rect key="frame" x="0.0" y="0.0" width="195" height="109"/>
+                                                                            <autoresizingMask key="autoresizingMask"/>
+                                                                            <subviews>
+                                                                                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Zyf-Xt-Q9F" customClass="YouTubePlayerView" customModule="YouTubePlayer">
+                                                                                    <rect key="frame" x="8" y="0.0" width="187" height="109"/>
+                                                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                                                                </view>
+                                                                            </subviews>
+                                                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        </view>
+                                                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                                        <connections>
+                                                                            <outlet property="videoPlayer" destination="Zyf-Xt-Q9F" id="FhN-kz-zi0"/>
+                                                                        </connections>
+                                                                    </collectionViewCell>
+                                                                </cells>
+                                                            </collectionView>
                                                         </subviews>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                         <constraints>
                                                             <constraint firstItem="BbR-FH-FHu" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" id="0bn-lt-Iaw"/>
                                                             <constraint firstItem="UWU-iP-Noc" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" constant="8" id="1qn-WL-3JT"/>
                                                             <constraint firstItem="aKV-jP-FtN" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" id="2lQ-JN-CSd"/>
+                                                            <constraint firstAttribute="trailing" secondItem="dop-d4-Uh3" secondAttribute="trailing" id="3Zm-YG-Kx6"/>
                                                             <constraint firstItem="z0D-bP-mwj" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" id="6Cy-RX-Oh9"/>
-                                                            <constraint firstAttribute="height" constant="1116" id="CYl-lg-sdV"/>
                                                             <constraint firstAttribute="trailing" secondItem="UWU-iP-Noc" secondAttribute="trailing" constant="8" id="LIt-Wn-IvY"/>
+                                                            <constraint firstItem="dop-d4-Uh3" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" constant="8" id="Nnc-CD-PXJ"/>
+                                                            <constraint firstAttribute="trailing" secondItem="VrY-Cv-6Qm" secondAttribute="trailing" id="QR8-b4-Iil"/>
                                                             <constraint firstAttribute="trailing" secondItem="z0D-bP-mwj" secondAttribute="trailing" id="QoN-8L-mx1"/>
                                                             <constraint firstItem="9fp-HM-lz0" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" id="Upd-Lg-FVO"/>
                                                             <constraint firstItem="y9E-0R-gYQ" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" id="c35-Mu-jWU"/>
+                                                            <constraint firstAttribute="height" constant="1001" id="c7S-0a-AzG"/>
                                                             <constraint firstAttribute="trailing" secondItem="9fp-HM-lz0" secondAttribute="trailing" id="g6L-T3-x8u"/>
+                                                            <constraint firstAttribute="trailing" secondItem="bex-81-M4h" secondAttribute="trailing" id="i3D-dF-RXD"/>
                                                             <constraint firstAttribute="trailing" secondItem="y9E-0R-gYQ" secondAttribute="trailing" id="ias-pe-x4g"/>
+                                                            <constraint firstItem="VrY-Cv-6Qm" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" constant="8" id="mzt-vY-Bgz"/>
+                                                            <constraint firstItem="bex-81-M4h" firstAttribute="leading" secondItem="3Rp-fg-kiN" secondAttribute="leading" constant="7" id="qVp-TL-GdI"/>
                                                             <constraint firstAttribute="trailing" secondItem="BbR-FH-FHu" secondAttribute="trailing" id="sGt-wv-yi0"/>
                                                             <constraint firstAttribute="trailing" secondItem="aKV-jP-FtN" secondAttribute="trailing" id="uh8-sM-Qik"/>
                                                         </constraints>
@@ -367,7 +407,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1267" y="-276"/>
+            <point key="canvasLocation" x="1267" y="-280"/>
         </scene>
         <!--Review View Controller-->
         <scene sceneID="qUU-f5-hYs">
@@ -471,6 +511,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <outlet property="actorPhotoView" destination="ZVP-Cb-Gy6" id="03v-2D-T7X"/>
                                             <outlet property="characterLabel" destination="oRE-9t-4wW" id="Tou-dA-kt9"/>

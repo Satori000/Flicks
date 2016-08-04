@@ -62,9 +62,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
         let screenHeight = UIScreen.mainScreen().bounds.size.height
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 2)
         
-        infoView.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.5)
-        videoCollection.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
-
+        infoView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        //videoCollection.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
+     
+        
+        
+        
        
         let title = movie!["title"] as! String
         let releaseDate = movie!["release_date"] as! String
@@ -302,14 +305,11 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
             print("indexPath: \(indexPath)")
         }
         
-        //print("you've reached cell for row at indexPath")
         if collectionView == videoCollection {
-            //print("you've reached video collection")
             let cell = videoCollection.dequeueReusableCellWithReuseIdentifier("VideoCell", forIndexPath: indexPath) as! VideoCell
-            
+            cell.videoPlayer.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.0)
             let video = videos![indexPath.row]
             let key = video["key"] as! String
-            
             cell.videoPlayer.loadVideoID(key)
 
             return cell
@@ -429,6 +429,15 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
         print("hello")
+        if scrollView == self.scrollView {
+            let proportionalOffset = (scrollView.contentOffset.y / 1000)
+            print("height: \(scrollView.contentSize.height)")
+            print("offset: \(scrollView.contentOffset.y)")
+            print("proportional offset: \(proportionalOffset)")
+            infoView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5 + proportionalOffset)
+            
+        }
+        print("alpha: \(infoView.alpha)")
         
         //let topConstraint = NSLayoutConstraint(item: infoView, attribute: NSLayoutAttribute.Top, relatedBy: NSLayoutRelation.Equal, toItem: scrollView, attribute: NSLayoutAttribute.Bottom, multiplier: 1, constant: 189 - //scrollView.contentOffset.consta)
         

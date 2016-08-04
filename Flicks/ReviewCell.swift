@@ -14,6 +14,7 @@ class ReviewCell: UITableViewCell {
 
     @IBOutlet weak var contentLabel: UILabel!
     
+    var review: NSDictionary?
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

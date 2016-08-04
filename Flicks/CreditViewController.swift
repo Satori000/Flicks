@@ -22,8 +22,9 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
         tableView.delegate = self
         tableView.dataSource = self
         
+       
         print(id!)
-        
+        self.title = "Cast & Crew"
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
         let url = NSURL(string:"https://api.themoviedb.org/3/movie/\(id!)/credits?api_key=\(apiKey)")
         

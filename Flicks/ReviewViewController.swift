@@ -14,12 +14,14 @@ class ReviewViewController: UIViewController, UITableViewDelegate, UITableViewDa
     
     var id: Int?
     var reviews: [NSDictionary]?
+    var movie: NSDictionary?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
         
+        self.title = "Reviews"
         print(id!)
         
         let apiKey = "a07e22bc18f5cb106bfe4cc1f83ad8ed"
@@ -77,21 +79,32 @@ class ReviewViewController: UIViewController, UITableViewDelegate, UITableViewDa
         let cell = tableView.dequeueReusableCellWithIdentifier("ReviewCell", forIndexPath: indexPath) as! ReviewCell
         
         let review = reviews![indexPath.row]
-        
+        cell.review = review
         cell.authorLabel.text = review["author"] as! String
         cell.contentLabel.text = review["content"] as! String
         
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
+        let cell = sender as! ReviewCell
+        
+        let review = cell.review!
+        
+        let fullReviewVC = segue.destinationViewController as! FullReviewViewController
+        
+        fullReviewVC.review = review
+        fullReviewVC.movie = self.movie!
+        
+        
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
     }
-    */
+    
 
 }

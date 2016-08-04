@@ -63,6 +63,16 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
         scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 2)
         
         infoView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.5)
+        
+        
+        
+        
+        self.navigationController?.navigationBar.barTintColor = UIColor.lightGrayColor().colorWithAlphaComponent(0.5)
+        
+        
+         self.navigationController?.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.blackColor()]
+        self.navigationController?.navigationBar.tintColor = UIColor.blackColor()
+        
         //videoCollection.backgroundColor = UIColor.whiteColor().colorWithAlphaComponent(0.0)
      
         
@@ -455,6 +465,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
             
         } else if segue.destinationViewController is ReviewViewController {
             (segue.destinationViewController as! ReviewViewController).id = movie!["id"] as! Int
+            
+            (segue.destinationViewController as! ReviewViewController).movie = self.movie
         } else if segue.destinationViewController is DetailViewController {
             (segue.destinationViewController as! DetailViewController).movie = (sender as! SimilarMovieCell).movie!
             

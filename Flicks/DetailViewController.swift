@@ -137,6 +137,9 @@ class DetailViewController: UIViewController, UIScrollViewDelegate, UICollection
             
 
             
+        } else {
+            posterView.image = UIImage(named: "noposter")
+
         }
         
         //scrollView.contentSize = CGSize(width: screenWidth, height: screenHeight * 4)

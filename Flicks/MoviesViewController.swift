@@ -264,7 +264,9 @@ class MoviesViewController: UIViewController, UICollectionViewDataSource, UISear
         else {
             // No poster image. Can either set to nil (no image) or a default movie poster image
             // that you include as an asset
-            cell.posterImage.image = nil
+            cell.posterImage.image = UIImage(named: "noposter")
+            cell.posterImage.backgroundColor = UIColor.whiteColor()
+            
         }
 
         

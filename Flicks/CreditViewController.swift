@@ -124,9 +124,9 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
             
             if let posterPath = crewMember["profile_path"] as? String {
                 let posterBaseUrl = "http://image.tmdb.org/t/p/w500"
-            
+                print("name: \(name) profile path: \(posterPath)")
                 let imageRequest = NSURLRequest(URL: NSURL(string: posterBaseUrl + posterPath)!)
-                
+                print("poster path: \(posterBaseUrl + posterPath)")
                 cell.actorPhotoView.setImageWithURLRequest(
                     imageRequest,
                     placeholderImage: nil,
@@ -152,7 +152,8 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
             else {
                 // No poster image. Can either set to nil (no image) or a default movie poster image
                 // that you include as an asset
-                cell.actorPhotoView.image = nil
+                print("hey there was no poster url ")
+                cell.actorPhotoView.image = UIImage(named: "profile_default")
             }
             
         } else {
@@ -193,7 +194,8 @@ class CreditViewController: UIViewController, UITableViewDelegate, UITableViewDa
             else {
                 // No poster image. Can either set to nil (no image) or a default movie poster image
                 // that you include as an asset
-                cell.actorPhotoView.image = nil
+                cell.actorPhotoView.image = UIImage(named: "profile_default")
+                
             }
             
             

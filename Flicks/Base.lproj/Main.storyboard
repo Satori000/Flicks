@@ -36,6 +36,7 @@
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="s5R-LR-4RV">
                                                     <rect key="frame" x="8" y="8" width="140" height="216"/>
+                                                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                 </imageView>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
@@ -129,7 +130,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                         <subviews>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lJw-yz-6xb">
-                                                <rect key="frame" x="0.0" y="0.0" width="320" height="2000"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="320" height="1200"/>
                                                 <subviews>
                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Rp-fg-kiN">
                                                         <rect key="frame" x="0.0" y="359" width="320" height="841"/>
@@ -460,8 +461,9 @@
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="3Rp-fg-kiN" firstAttribute="top" secondItem="lJw-yz-6xb" secondAttribute="top" constant="359" id="MO8-Y0-Qib"/>
-                                                    <constraint firstAttribute="height" constant="2000" id="Pjt-mR-cVA"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="2000" id="Pjt-mR-cVA"/>
                                                     <constraint firstItem="3Rp-fg-kiN" firstAttribute="leading" secondItem="lJw-yz-6xb" secondAttribute="leading" id="Vlc-eU-wjF"/>
+                                                    <constraint firstAttribute="bottom" secondItem="3Rp-fg-kiN" secondAttribute="bottom" id="gFG-6U-yqQ"/>
                                                     <constraint firstAttribute="trailing" secondItem="3Rp-fg-kiN" secondAttribute="trailing" id="yNF-cm-iWT"/>
                                                 </constraints>
                                             </view>
@@ -624,15 +626,15 @@
                                     <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="czf-a2-7vO">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="o8K-NL-NtX">
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o8K-NL-NtX">
                                                 <rect key="frame" x="0.0" y="0.0" width="320" height="10000"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="10000" id="K5O-mg-X5v"/>
+                                                    <constraint firstAttribute="height" relation="lessThanOrEqual" constant="10000" id="K5O-mg-X5v"/>
                                                 </constraints>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZ9-WY-Cxe">
-                                                <rect key="frame" x="0.0" y="260" width="320" height="186"/>
+                                                <rect key="frame" x="0.0" y="382" width="320" height="186"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Author" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-XM-hcW">
                                                         <rect key="frame" x="8" y="16" width="284" height="21"/>
@@ -666,9 +668,10 @@
                                         <constraints>
                                             <constraint firstAttribute="trailing" secondItem="o8K-NL-NtX" secondAttribute="trailing" id="4fu-wu-Du5"/>
                                             <constraint firstItem="o8K-NL-NtX" firstAttribute="top" secondItem="czf-a2-7vO" secondAttribute="top" id="DQu-ir-ngL"/>
-                                            <constraint firstItem="nZ9-WY-Cxe" firstAttribute="top" secondItem="czf-a2-7vO" secondAttribute="top" constant="260" id="Fag-4p-0YN"/>
+                                            <constraint firstAttribute="bottom" secondItem="nZ9-WY-Cxe" secondAttribute="bottom" id="OB9-q2-bFL"/>
                                             <constraint firstItem="nZ9-WY-Cxe" firstAttribute="leading" secondItem="czf-a2-7vO" secondAttribute="leading" id="Qbd-Dr-83L"/>
                                             <constraint firstAttribute="bottom" secondItem="o8K-NL-NtX" secondAttribute="bottom" id="b7l-7O-WLS"/>
+                                            <constraint firstItem="nZ9-WY-Cxe" firstAttribute="top" secondItem="czf-a2-7vO" secondAttribute="top" constant="382" id="epO-yU-YJD"/>
                                             <constraint firstAttribute="trailing" secondItem="nZ9-WY-Cxe" secondAttribute="trailing" id="jyr-f2-JzW"/>
                                             <constraint firstItem="o8K-NL-NtX" firstAttribute="centerX" secondItem="czf-a2-7vO" secondAttribute="centerX" id="qUJ-6k-ehy"/>
                                             <constraint firstItem="o8K-NL-NtX" firstAttribute="leading" secondItem="czf-a2-7vO" secondAttribute="leading" id="s3X-Wu-ibk"/>
@@ -732,8 +735,9 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="105"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-Cb-Gy6">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DefaultProfilePic" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZVP-Cb-Gy6">
                                                     <rect key="frame" x="8" y="8" width="63" height="84"/>
+                                                    <color key="backgroundColor" red="0.97295673076923073" green="0.97295673076923073" blue="0.97295673076923073" alpha="1" colorSpace="calibratedRGB"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Adam Sandler" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i9h-re-49S">
                                                     <rect key="frame" x="79" y="17" width="233" height="21"/>
@@ -796,6 +800,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="DefaultProfilePic" width="700" height="700"/>
         <image name="noun_4627_cc" width="666" height="572"/>
     </resources>
     <inferredMetricsTieBreakers>

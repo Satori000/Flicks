@@ -33,7 +33,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let topRatedViewController = topRatedNavigationController.topViewController as! MoviesViewController
         topRatedViewController.endpoint = "top_rated"
         topRatedNavigationController.tabBarItem.title = "Top Rated"
-        topRatedNavigationController.tabBarItem.image = UIImage(named: "noun_431_cc")
+        topRatedNavigationController.tabBarItem.image = UIImage(named: "TopRatedIcon")
         //image credit goes to Edward Boatman
         
         let popularNavigationController = storyboard.instantiateViewControllerWithIdentifier("MoviesNavigationController") as! UINavigationController
@@ -41,7 +41,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let popularViewController = popularNavigationController.topViewController as! MoviesViewController
         popularViewController.endpoint = "popular"
         popularNavigationController.tabBarItem.title = "Popular"
-        popularNavigationController.tabBarItem.image = UIImage(named: "noun_158678_cc")
+        popularNavigationController.tabBarItem.image = UIImage(named: "PopularIcon")
         //image credit goes to Johnny Francis Grattan
 
         let upcomingNavigationController = storyboard.instantiateViewControllerWithIdentifier("MoviesNavigationController") as! UINavigationController
@@ -49,7 +49,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let upcomingViewController = upcomingNavigationController.topViewController as! MoviesViewController
         upcomingViewController.endpoint = "upcoming"
         upcomingNavigationController.tabBarItem.title = "Upcoming"
-        upcomingNavigationController.tabBarItem.image = UIImage(named: "noun_158678_cc")
+        upcomingNavigationController.tabBarItem.image = UIImage(named: "UpcomingIcon")
         //image credit goes to Johnny Francis Grattan
         
         

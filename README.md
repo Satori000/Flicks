@@ -61,7 +61,7 @@ CocoaPods did not install initially due to changes to OS X El Capitan.
 
 **Flicks** is a movies app displaying box office and top rental DVDs using [The Movie Database API](http://docs.themoviedb.apiary.io/#).
 
-Time spent: **10** hours spent in total
+Time spent: **40** hours spent in total
 
 ## User Stories
 
@@ -81,7 +81,12 @@ The following **additional** features are implemented:
 - [x] Infinite scrolling on each list of movies
 - [x] Upcoming and Popular movie lists added, each with their own tab bar item
 - [x] Trailers of movies on YouTube can be opened straight from the details view controller
-
+- [x] Ability to browse posters and backdrops of a movie
+- [x] User can jump from one movie's details to a similar movie's details by browsing the "similar movies" collection
+- [x] List of Cast and Crew in a movie and the characters/jobs they performed as
+- [x] All reviews posted to the database for a movie can be read
+- [x] Ratings and release date are also portrayed on the detail view
+- [x] detail scrollview transitions from translucent to opaque upon scrolling down
 
 ## Video Walkthrough 
 
@@ -92,8 +97,9 @@ Here's a walkthrough of implemented user stories:
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
 ## Notes
+Implementing Auto-Layout constraints on a scroll view proved to be more difficult than expected due to the necessary content size requirements of a scroll view
 
-Describe any challenges encountered while building the app.
+Special thanks to gilesvangruisen for the YouTubePlayer framework which allows Flicks to play trailers and ashleymills for Reachability which allows Flicks to detect whether or not the user is connected to a network and able to refresh their movie feeds
 
 ## License
 

@@ -80,7 +80,7 @@ class ReviewViewController: UIViewController, UITableViewDelegate, UITableViewDa
         
         let review = reviews![indexPath.row]
         cell.review = review
-        cell.authorLabel.text = review["author"] as! String
+        cell.authorLabel.text = "-\(review["author"] as! String)"
         cell.contentLabel.text = review["content"] as! String
         
         return cell

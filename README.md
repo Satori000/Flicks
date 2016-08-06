@@ -92,11 +92,17 @@ The following **additional** features are implemented:
 Here's a walkthrough of implemented user stories:
 
 <img src='http://i.imgur.com/0CVsJ8U.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 Search through movies that are currently in theatres, top rated, popular, or upcoming
+
 <img src='http://i.imgur.com/uiBRbXo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 Browse a movie's trailers, posters, backdrops and related movies
+
 <img src='http://i.imgur.com/ioBgsfG.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
+
 Discover a movie's cast, read its reviews, and search for specific titles
+
 <img src='http://i.imgur.com/HjQaera.gif' title='Video Walkthrough' width='' alt='Video Walkthrough' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
